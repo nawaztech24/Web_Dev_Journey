@@ -1,8 +1,5 @@
-Python_Day1 
-Comment,Escape Sequence And Print Statement
-variables and data types 
-Python_day2
-operators
-calculator
+# Web Development Journey 🌐
+
+This repository contains my web development learning work using HTML, CSS and Javascript.
 
 
