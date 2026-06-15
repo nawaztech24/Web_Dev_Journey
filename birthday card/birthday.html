@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOHD NAWAZ KHAN HTML</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:'Poppins',sans-serif;
+background:
+radial-gradient(circle at top, rgba(255,200,220,.45), transparent 60%),
+linear-gradient(135deg,#ff7eb3,#c77dff,#845ec2);
+cursor:none;
+}
+
+#startBtn{
+position:fixed;
+inset:0;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+color:white;
+font-family:'Allura',cursive;
+cursor:pointer;
+z-index:100;
+background:rgba(0,0,0,.15);
+backdrop-filter:blur(3px);
+}
+
+.count{
+position:fixed;
+font-size:120px;
+color:white;
+font-family:'Allura',cursive;
+text-shadow:0 0 30px #ffd6ff;
+animation:count 1s ease forwards;
+z-index:90;
+}
+
+@keyframes count{
+0%{opacity:0;transform:scale(.5);}
+40%{opacity:1;transform:scale(1.2);}
+100%{opacity:0;}
+}
+
+.container{
+text-align:center;
+transform:translateY(-25px);
+opacity:0;
+z-index:10;
+}
+
+.container.show{
+animation:reveal 1.4s ease forwards;
+}
+
+@keyframes reveal{
+from{opacity:0;transform:scale(.85);}
+to{opacity:1;transform:scale(1) translateY(-25px);}
+}
+
+@keyframes softFloat{
+from{transform:translateY(0);}
+to{transform:translateY(-8px);}
+}
+
+@keyframes glow{
+0%{text-shadow:0 0 12px #ff9dfc;}
+100%{text-shadow:0 0 28px #ffd6ff;}
+}
+
+h1{
+font-family:'Allura',cursive;
+font-size:60px;
+color:white;
+animation:softFloat 2s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+}
+
+.name{
+font-size:44px;
+color:white;
+font-family:'Allura',cursive;
+position:relative;
+animation:softFloat 2.2s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+}
+
+.name::after{
+content:"";
+position:absolute;
+inset:-12px;
+border-radius:50%;
+box-shadow:0 0 40px rgba(255,200,255,.9);
+z-index:-1;
+}
+
+.cake img{
+width:280px;
+max-width:90%;
+filter:drop-shadow(0 0 30px rgba(255,200,255,.9));
+}
+
+.wish{
+margin-top:16px;
+color:white;
+font-size:16px;
+text-shadow:0 0 15px rgba(255,200,255,.9);
+animation:glow 2.5s infinite alternate;
+}
+
+.float{
+position:fixed;
+bottom:-60px;
+font-size:32px;
+animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+to{transform:translateY(-120vh);opacity:0;}
+}
+
+.sheen{
+position:fixed;
+bottom:-150px;
+width:180px;
+height:180px;
+background:url("sheen.png") no-repeat center;
+background-size:contain;
+animation:sheenFloat linear forwards;
+filter:drop-shadow(0 0 25px rgba(255,200,255,.8));
+}
+
+@keyframes sheenFloat{
+to{transform:translateY(-130vh) rotate(10deg);opacity:0;}
+}
+
+.rain{
+position:fixed;
+top:-20px;
+font-size:18px;
+animation:rain linear forwards;
+}
+
+@keyframes rain{
+to{transform:translateY(120vh) rotate(360deg);opacity:0;}
+}
+
+.sparkle{
+position:fixed;
+width:16px;
+height:16px;
+background:radial-gradient(circle,#fff,#ffb3ff,#ff4fd8,transparent);
+border-radius:50%;
+pointer-events:none;
+animation:sparkle 1.2s linear forwards;
+}
+
+@keyframes sparkle{
+from{transform:scale(1);opacity:1;}
+to{transform:scale(3.5);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" src="music.mp3"></audio>
+<audio id="clap" src="clap.mp3"></audio>
+
+<div id="startBtn">Tap to Start 🎵</div>
+
+<div class="container" id="card">
+<h1>Happy Birthday 🎉🎈</h1>
+<div class="name"> Navaaa 🤍</div>
+<div class="cake"><img src="cake.png"></div>
+<div class="wish">
+May Almighty Allah bless your days with sweetness, your smile with light,<br>
+your health with strength, and your life with love and peace ✨🎂
+</div>
+</div>
+
+<script>
+const emojis=["🎈","🎂","🎁","✨","🎉","🥳","💖","🌟"];
+
+document.addEventListener("mousemove",e=>{
+for(let i=0;i<10;i++){
+const s=document.createElement("div");
+s.className="sparkle";
+s.style.left=e.clientX+Math.random()*40-20+"px";
+s.style.top=e.clientY+Math.random()*40-20+"px";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),1200);
+}
+});
+
+document.getElementById("startBtn").onclick=()=>{
+document.getElementById("startBtn").remove();
+
+const music=document.getElementById("music");
+const clap=document.getElementById("clap");
+
+music.currentTime=0;
+music.play();
+
+["3","2","1"].forEach((n,i)=>{
+setTimeout(()=>{
+const c=document.createElement("div");
+c.className="count";
+c.innerText=n;
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),1000);
+},i*1000);
+});
+
+setTimeout(()=>{
+document.getElementById("card").classList.add("show");
+multiFireworks();
+startFloating();
+startRain();
+
+clap.currentTime=0;
+clap.play();
+},3000);
+};
+
+function startFloating(){
+setInterval(()=>{
+for(let i=0;i<7;i++){
+const f=document.createElement("div");
+f.className="float";
+f.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+f.style.left=Math.random()*100+"vw";
+f.style.animationDuration=(6+Math.random()*4)+"s";
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),10000);
+}
+},350);
+
+setInterval(()=>{
+const s=document.createElement("div");
+s.className="sheen";
+s.style.left=Math.random()*100+"vw";
+s.style.animationDuration=(10+Math.random()*6)+"s";
+document.body.appendChild(s);
+setTimeout(()=>s.remove(),20000);
+},2000);
+}
+
+function startRain(){
+setInterval(()=>{
+for(let i=0;i<12;i++){
+const r=document.createElement("div");
+r.className="rain";
+r.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+r.style.left=Math.random()*100+"vw";
+r.style.animationDuration=(3+Math.random()*2)+"s";
+document.body.appendChild(r);
+setTimeout(()=>r.remove(),6000);
+}
+},300);
+}
+
+function fireworksBurst(x,y){
+for(let i=0;i<80;i++){
+const f=document.createElement("div");
+f.style.position="fixed";
+f.style.left=x+"px";
+f.style.top=y+"px";
+f.style.width="10px";
+f.style.height="10px";
+f.style.borderRadius="50%";
+f.style.background="radial-gradient(circle,#fff,#ff9dfc,#ff4fd8)";
+const angle=Math.random()*Math.PI*2;
+const dist=160+Math.random()*240;
+f.animate([
+{transform:"translate(0,0)",opacity:1},
+{transform:`translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist}px)`,opacity:0}
+],{duration:1400});
+document.body.appendChild(f);
+setTimeout(()=>f.remove(),1400);
+}
+}
+
+function multiFireworks(){
+for(let i=0;i<8;i++){
+setTimeout(()=>{
+fireworksBurst(
+window.innerWidth*(.15+.7*Math.random()),
+window.innerHeight*(.15+.5*Math.random())
+);
+},i*450);
+}
+}
+</script>
+
+</body>
+</html>

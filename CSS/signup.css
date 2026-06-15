@@ -1,0 +1,74 @@
+/* Full background */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f") no-repeat center center/cover;
+}
+
+/* Glass container */
+.form-container {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 15px;
+    width: 350px;
+}
+
+/* Input styling */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* Side by side row */
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.row input {
+    width: 50%;
+}
+
+/* Email tick icon */
+.email-group {
+    position: relative;
+}
+
+.check {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    background: #8dc63f;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 12px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #a8e063, #56ab2f);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}

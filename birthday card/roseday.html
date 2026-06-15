@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MOHD NAWAZ KHAN HTML</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff6a88,#ff99ac);
+    font-family:'Segoe UI',sans-serif;
+}
+
+.card{
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(18px);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    box-shadow:0 20px 60px rgba(0,0,0,0.2);
+    width:350px;
+}
+
+/* quote */
+.quote{
+    font-size:26px;
+    animation:quoteMove 2s forwards;
+    animation-delay:5s;   /* 5 sec rukega */
+}
+
+@keyframes quoteMove{
+    to{transform:translateY(-120px); opacity:0;}
+}
+
+/* image */
+img{
+    width:100%;
+    border-radius:20px;
+    margin-top:20px;
+    opacity:0;
+    animation:showImg 2s forwards;
+    animation-delay:6s;
+}
+
+@keyframes showImg{
+    from{opacity:0; transform:translateY(100px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.message{
+    font-size:30px;
+    margin-top:15px;
+    opacity:0;
+    animation:showText 2s forwards;
+    animation-delay:7s;
+}
+
+@keyframes showText{
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="quote">
+Wait… Something special is loading 😊
+</div>
+
+<img src="flowers.jpg" alt="Flowers">
+
+<div class="message">This is for you Shifaa❤️</div>
+
+</div>
+
+</body>
+</html>

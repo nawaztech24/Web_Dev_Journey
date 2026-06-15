@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigation Bar Variation</title>
+
+<style>
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.Nav-Container{
+    margin-bottom: 40px;
+}
+
+h2{
+    margin-bottom: 10px;
+}
+
+/* ================= Variation 1 ================= */
+
+.nav1{
+   background-color: #f8f9fa;
+   padding: 10px;
+}
+
+.nav1 ul{
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav1 a{
+    text-decoration: none;
+    color: black;
+    position: relative;
+}
+
+.nav1 a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0;
+    height:2px;
+    background:black;
+    transition:0.3s;
+}
+
+.nav1 a:hover::after{
+    width:100%;
+}
+
+.login-btn{
+    background:royalblue;
+    color:white;
+    border:none;
+    padding:5px 15px;
+    border-radius:4px;
+}
+
+/* ================= Variation 2 ================= */
+
+.nav2 ul{
+    list-style:none;
+    padding:0;
+}
+
+.nav2 li{
+    margin:10px 0;
+}
+
+.nav2 a{
+    text-decoration:none;
+    color:dodgerblue;
+    display:block;
+    padding:5px;
+    transition:0.3s;
+}
+
+.nav2 a:hover{
+    background:#333;
+    padding-left:15px;
+}
+/* ================= Variation 3 ================= */
+
+.nav3 ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;              /* 👈 makes horizontal */
+    align-items:center;
+    gap:25px;
+}
+
+.nav3 li{
+    position:relative;
+}
+
+.nav3 a{
+    text-decoration:none;
+    color:dodgerblue;
+    padding:5px 0;
+}
+
+.nav3 a:hover{
+    color:white;
+}
+
+/* Dropdown */
+.dropdown-content{
+    display:none;
+    position:absolute;
+    top:30px;
+    left:0;
+    background:#222;
+    padding:10px 0;
+    min-width:120px;
+}
+
+.dropdown-content a{
+    display:block;
+    padding:8px 15px;
+    color:white;
+}
+
+.dropdown-content a:hover{
+    background:#333;
+}
+
+/* Show dropdown on hover */
+.nav3 li:hover .dropdown-content{
+    display:block;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="Nav-Container">
+<h2>Variation 1: Horizontal with underline effect</h2>
+<nav class="nav1">
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Products</a></li>
+<li><button class="login-btn">Login</button></li>
+</ul>
+</nav>
+</div>
+
+<h2>Variation 2: Vertical with hover effect</h2>
+<nav class="nav2">
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Products</a></li>
+</ul>
+<button class="login-btn">Login</button>
+</nav>
+
+<h2>Variation 3: Horizontal with dropdown</h2>
+<nav class="nav3">
+<ul>
+<li><a href="#">Home</a></li>
+<li>
+<a href="#">About</a>
+<div class="dropdown-content">
+<a href="#">Our Story</a>
+<a href="#">Team</a>
+<a href="#">Contact</a>
+</div>
+</li>
+<li><a href="#">Products</a></li>
+<li><button class="login-btn">Login</button></li>
+</ul>
+</nav>
+
+</body>
+</html>
